@@ -23,7 +23,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
   const [showAllItems, setShowAllItems] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-16">
+    <div className="min-h-screen flex flex-col bg-background">
       <AppHeader
         patientInitials={assessment.patientInitials}
         attendanceDate={assessment.attendanceDate}

@@ -65,7 +65,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   const answeredCount = draft ? Object.keys(draft.responses).length : 0;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-12">
+    <div className="min-h-screen flex flex-col bg-background">
       <AppHeader onNavigateHistory={onNavigateHistory} />
 
       <main className="flex-1 max-w-xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-8 space-y-6">

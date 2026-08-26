@@ -35,7 +35,7 @@ export const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
   const isLastItem = item.number === totalItems;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-28">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Header with Exit action */}
       <AppHeader
         patientInitials={draft.patientInitials}
@@ -128,42 +128,44 @@ export const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
             ))}
           </div>
 
-          {/* Action Navigation Card (In-flow, elevated above bottom footer) */}
-          <div className="pt-4 mt-6 border-t border-surface-container">
+          {/* Action Navigation Card (In-flow, responsive, no overflow) */}
+          <div className="pt-2 mt-4">
             <div className="bg-surface-white border border-surface-container rounded-3xl p-4 sm:p-5 shadow-sm space-y-3">
-              <div className="flex items-center justify-between gap-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <button
                   type="button"
                   onClick={onPrev}
                   disabled={isFirstItem}
-                  className="px-4 sm:px-6 py-3.5 rounded-2xl border-2 border-surface-container text-sm font-bold text-on-surface hover:bg-surface-container transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="w-full py-3.5 px-3 sm:px-6 rounded-2xl border-2 border-surface-container text-sm font-bold text-on-surface hover:bg-surface-container transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  <ArrowLeft className="w-4 h-4" />
+                  <ArrowLeft className="w-4 h-4 shrink-0" />
                   <span>Anterior</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={onNavigateReview}
-                  className="px-3 py-2 text-xs font-semibold text-secondary hover:text-primary hover:bg-surface-container rounded-xl transition-colors text-center"
-                >
-                  Ver Respostas ({Object.keys(draft.responses).length}/33)
                 </button>
 
                 <button
                   type="button"
                   onClick={onNext}
                   disabled={!hasSelectedScore}
-                  className="px-6 sm:px-8 py-3.5 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/25 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+                  className="w-full py-3.5 px-3 sm:px-6 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/25 transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
                 >
                   <span>{isLastItem ? 'Revisar' : 'Próximo'}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 shrink-0" />
+                </button>
+              </div>
+
+              <div className="text-center pt-2 border-t border-surface-container/60">
+                <button
+                  type="button"
+                  onClick={onNavigateReview}
+                  className="px-3 py-1.5 text-xs font-semibold text-secondary hover:text-primary hover:bg-surface-container rounded-xl transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>Ver todas as respostas ({Object.keys(draft.responses).length}/33 respondidas)</span>
                 </button>
               </div>
 
               {!hasSelectedScore && (
-                <p className="text-center text-xs text-amber-700 font-medium">
-                  Selecione uma pontuação acima para avançar para o próximo item.
+                <p className="text-center text-xs text-amber-800 font-medium bg-amber-50 py-2 px-3 rounded-xl border border-amber-200/80">
+                  Selecione uma resposta acima para avançar.
                 </p>
               )}
             </div>

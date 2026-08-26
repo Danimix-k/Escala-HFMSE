@@ -24,7 +24,7 @@ export const DetailScreen: React.FC<DetailScreenProps> = ({
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-16">
+    <div className="min-h-screen flex flex-col bg-background">
       <AppHeader
         title="Detalhe do Atendimento"
         showBackButton={true}

@@ -27,7 +27,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
   const [showClearAllConfirm, setShowClearAllConfirm] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-16">
+    <div className="min-h-screen flex flex-col bg-background">
       <AppHeader
         title="Histórico Local"
         showBackButton={true}

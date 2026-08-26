@@ -28,7 +28,7 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
   const isComplete = missingItems.length === 0;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-28">
+    <div className="min-h-screen flex flex-col bg-background">
       <AppHeader
         title="Revisar Avaliação"
         patientInitials={draft.patientInitials}
