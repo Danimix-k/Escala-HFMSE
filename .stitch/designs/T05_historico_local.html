@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Histórico Local - HFMSE</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#ecf0ff",
+                        "background": "#f9f9ff",
+                        "on-tertiary-container": "#cadcec",
+                        "score-gold": "#C19C00",
+                        "on-background": "#091c35",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#dbe4eb",
+                        "primary-container": "#005eb8",
+                        "clinical-bg": "#F8FAFC",
+                        "surface-tint": "#005db6",
+                        "tertiary-container": "#50616e",
+                        "outline-variant": "#c2c6d4",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "secondary-fixed-dim": "#bfc8ce",
+                        "on-primary-container": "#c8daff",
+                        "on-tertiary-fixed-variant": "#384956",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#d6e3ff",
+                        "tertiary-fixed": "#d3e5f5",
+                        "surface-variant": "#d6e3ff",
+                        "on-secondary-container": "#5d666c",
+                        "surface-white": "#FFFFFF",
+                        "surface-dim": "#cadbfc",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#424752",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#00478d",
+                        "secondary": "#576066",
+                        "secondary-container": "#dbe4eb",
+                        "on-primary-fixed-variant": "#00468c",
+                        "success-green": "#107C10",
+                        "tertiary": "#394956",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3f484e",
+                        "surface-container": "#e7eeff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#141d22",
+                        "outline": "#727783",
+                        "on-tertiary-fixed": "#0c1d29",
+                        "tertiary-fixed-dim": "#b7c9d8",
+                        "on-surface": "#091c35",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-high": "#dfe8ff",
+                        "inverse-surface": "#20314b",
+                        "on-primary-fixed": "#001b3d",
+                        "error-red": "#D13438",
+                        "surface": "#f9f9ff",
+                        "surface-container-low": "#f0f3ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-tablet": "32px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "touch-target-min": "48px",
+                        "unit": "8px",
+                        "container-padding-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "score-display": ["Manrope"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "score-display": ["48px", { "lineHeight": "56px", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles to ensure consistency with design system */
+        body {
+            background-color: theme('colors.clinical-bg');
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased text-on-surface">
+<!-- 
+        Task-focused Sub-page layout. 
+        Navigation shell is suppressed as this is a linear/details view with a 'Back' action.
+    -->
+<div class="max-w-screen-md mx-auto min-h-screen flex flex-col bg-clinical-bg relative shadow-sm">
+<!-- Header (Contextual, replacing Global TopAppBar for Sub-page) -->
+<header class="flex items-center justify-between px-container-padding-mobile h-14 w-full bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-20">
+<div class="flex items-center gap-2">
+<button aria-label="Voltar" class="p-2 -ml-2 rounded-full text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined" data-weight="regular">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface">Histórico neste dispositivo</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col p-container-padding-mobile gap-stack-lg pb-[120px]">
+<!-- Privacy / Local Storage Banner (Trust & Clinical Precision) -->
+<div class="bg-surface-container text-on-surface p-stack-md rounded-lg border border-outline-variant/30 flex gap-stack-sm items-start shadow-sm">
+<span class="material-symbols-outlined text-primary mt-0.5" data-weight="fill">info</span>
+<div>
+<h2 class="font-label-bold text-label-bold text-on-surface mb-1">Armazenamento Local</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        As avaliações são salvas de forma segura apenas neste aparelho. Não realizamos sincronização na nuvem ou backup automático.
+                    </p>
+</div>
+</div>
+<!-- History List Container -->
+<div class="flex flex-col gap-stack-sm" id="history-list">
+<!-- History Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-md relative group shadow-sm transition-all hover:border-primary/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="font-headline-md text-headline-md text-on-background">Paciente: MAS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                12/08/2026 às 14:30
+                            </div>
+</div>
+<!-- Overflow Menu Toggle -->
+<div class="relative">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors flex items-center justify-center min-h-[48px] min-w-[48px] -mr-2 -mt-2" onclick="toggleMenu('menu-1')">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="hidden absolute top-12 right-0 bg-surface-container-lowest border border-outline-variant shadow-lg rounded-lg py-2 w-56 z-10" id="menu-1">
+<button class="w-full text-left px-4 py-3 font-body-md text-body-md text-error hover:bg-error-container flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+                                    Excluir atendimento
+                                </button>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end border-t border-outline-variant/30 pt-4 mt-2">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Escore Total</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary">
+                                42 <span class="font-headline-md text-headline-md text-on-surface-variant/60">/ 66</span>
+</div>
+</div>
+<button class="flex items-center gap-2 text-primary font-label-bold text-label-bold bg-surface-container-low hover:bg-surface-container-high px-4 py-2 rounded-full transition-colors min-h-[48px]">
+                            Ver detalhes
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- History Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-md relative group shadow-sm transition-all hover:border-primary/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="font-headline-md text-headline-md text-on-background">Paciente: JRC</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                05/08/2026 às 09:15
+                            </div>
+</div>
+<!-- Overflow Menu Toggle -->
+<div class="relative">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors flex items-center justify-center min-h-[48px] min-w-[48px] -mr-2 -mt-2" onclick="toggleMenu('menu-2')">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="hidden absolute top-12 right-0 bg-surface-container-lowest border border-outline-variant shadow-lg rounded-lg py-2 w-56 z-10" id="menu-2">
+<button class="w-full text-left px-4 py-3 font-body-md text-body-md text-error hover:bg-error-container flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+                                    Excluir atendimento
+                                </button>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end border-t border-outline-variant/30 pt-4 mt-2">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Escore Total</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary">
+                                38 <span class="font-headline-md text-headline-md text-on-surface-variant/60">/ 66</span>
+</div>
+</div>
+<button class="flex items-center gap-2 text-primary font-label-bold text-label-bold bg-surface-container-low hover:bg-surface-container-high px-4 py-2 rounded-full transition-colors min-h-[48px]">
+                            Ver detalhes
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Empty State (Hidden by default, structure provided for logic implementation) -->
+<div class="hidden flex-col items-center justify-center py-16 px-4 text-center" id="empty-state">
+<div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-outline text-[32px]">history_toggle_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Nenhum histórico encontrado</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+                        As avaliações concluídas neste dispositivo aparecerão aqui.
+                    </p>
+</div>
+</div>
+<!-- Global Destructive Action -->
+<div class="mt-8 flex justify-center w-full">
+<button class="text-error font-label-bold text-label-bold flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container px-6 py-3 rounded-full transition-colors border border-transparent hover:border-error-container min-h-[48px] w-full md:w-auto">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+                    Apagar todo o histórico
+                </button>
+</div>
+</main>
+</div>
+<!-- Minimal JS for UI Interaction -->
+<script>
+        // Simple logic to toggle overflow menus and close them when clicking outside
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const isHidden = menu.classList.contains('hidden');
+            
+            // Close all other open menus first
+            document.querySelectorAll('[id^="menu-"]').forEach(el => {
+                if(el.id !== menuId) el.classList.add('hidden');
+            });
+            
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex', 'flex-col');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex', 'flex-col');
+            }
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = event.target.closest('[id^="menu-"]');
+            const isClickOnToggle = event.target.closest('button[onclick^="toggleMenu"]');
+            
+            if (!isClickInsideMenu && !isClickOnToggle) {
+                document.querySelectorAll('[id^="menu-"]').forEach(menu => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex', 'flex-col');
+                });
+            }
+        });
+    </script>
+</body></html>

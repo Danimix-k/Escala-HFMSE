@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HFMSE - Revisão</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#ecf0ff",
+            "background": "#f9f9ff",
+            "on-tertiary-container": "#cadcec",
+            "score-gold": "#C19C00",
+            "on-background": "#091c35",
+            "inverse-primary": "#a9c7ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#dbe4eb",
+            "primary-container": "#005eb8",
+            "clinical-bg": "#F8FAFC",
+            "surface-tint": "#005db6",
+            "tertiary-container": "#50616e",
+            "outline-variant": "#c2c6d4",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#a9c7ff",
+            "secondary-fixed-dim": "#bfc8ce",
+            "on-primary-container": "#c8daff",
+            "on-tertiary-fixed-variant": "#384956",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d6e3ff",
+            "tertiary-fixed": "#d3e5f5",
+            "surface-variant": "#d6e3ff",
+            "on-secondary-container": "#5d666c",
+            "surface-white": "#FFFFFF",
+            "surface-dim": "#cadbfc",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#424752",
+            "surface-bright": "#f9f9ff",
+            "primary": "#00478d",
+            "secondary": "#576066",
+            "secondary-container": "#dbe4eb",
+            "on-primary-fixed-variant": "#00468c",
+            "success-green": "#107C10",
+            "tertiary": "#394956",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#3f484e",
+            "surface-container": "#e7eeff",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#141d22",
+            "outline": "#727783",
+            "on-tertiary-fixed": "#0c1d29",
+            "tertiary-fixed-dim": "#b7c9d8",
+            "on-surface": "#091c35",
+            "primary-fixed": "#d6e3ff",
+            "surface-container-high": "#dfe8ff",
+            "inverse-surface": "#20314b",
+            "on-primary-fixed": "#001b3d",
+            "error-red": "#D13438",
+            "surface": "#f9f9ff",
+            "surface-container-low": "#f0f3ff",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-padding-tablet": "32px",
+            "stack-md": "16px",
+            "stack-lg": "24px",
+            "stack-sm": "8px",
+            "gutter": "16px",
+            "touch-target-min": "48px",
+            "unit": "8px",
+            "container-padding-mobile": "16px"
+          },
+          "fontFamily": {
+            "score-display": ["Manrope"],
+            "label-sm": ["Inter"],
+            "headline-lg-mobile": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "body-md": ["Inter"],
+            "label-bold": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "score-display": ["48px", { "lineHeight": "56px", "fontWeight": "800" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-bold": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-clinical-bg text-on-surface font-body-md antialiased md:flex md:justify-center">
+<!-- Main Container -->
+<main class="w-full max-w-[768px] min-h-screen bg-clinical-bg relative pb-32 flex flex-col shadow-sm dark:shadow-none">
+<!-- Header -->
+<header class="bg-surface-white px-container-padding-mobile pt-8 pb-4 border-b border-outline-variant md:px-container-padding-tablet sticky top-0 z-10 shadow-sm">
+<div class="flex flex-col gap-stack-sm">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-primary">Revisar avaliação</h1>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-bold">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>MAS</span>
+<span class="w-1 h-1 bg-outline rounded-full mx-1"></span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span>12/08/2026</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="px-container-padding-mobile md:px-container-padding-tablet py-stack-lg flex-grow flex flex-col gap-stack-lg">
+<!-- Summary Card -->
+<section class="bg-surface-white rounded-xl border border-outline-variant p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col gap-1 items-center md:items-start">
+<span class="font-label-bold text-success-green flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            33 de 33 respondidos
+          </span>
+<span class="text-on-surface-variant text-sm text-center md:text-left">Todos os itens da avaliação foram preenchidos.</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col items-center justify-center min-w-[140px] border border-outline-variant/50">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Pontuação Parcial</span>
+<div class="font-score-display text-primary flex items-baseline gap-1 mt-1">
+            42<span class="text-xl font-headline-md text-on-surface-variant">/66</span>
+</div>
+</div>
+</section>
+<!-- Review List -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-headline-md text-on-surface mb-2">Respostas</h2>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<article class="bg-surface-white rounded-lg border border-outline-variant p-4 flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-primary-container/30 transition-colors">
+<div class="flex-grow flex flex-col gap-1">
+<span class="font-label-bold text-on-surface">1. Sentado na cadeira</span>
+<span class="text-sm text-on-surface-variant">Completa o movimento</span>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-4">
+<span class="bg-surface-container-high text-primary font-label-bold px-3 py-1 rounded-full whitespace-nowrap">
+                2 pts
+              </span>
+<button aria-label="Editar item 1" class="text-primary hover:text-primary-container hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center gap-1 group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">edit</span>
+<span class="font-label-bold md:hidden">Editar</span>
+</button>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="bg-surface-white rounded-lg border border-outline-variant p-4 flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-primary-container/30 transition-colors">
+<div class="flex-grow flex flex-col gap-1">
+<span class="font-label-bold text-on-surface">2. Levantar da cadeira</span>
+<span class="text-sm text-on-surface-variant">Movimento parcial, com compensação</span>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-4">
+<span class="bg-surface-container-high text-primary font-label-bold px-3 py-1 rounded-full whitespace-nowrap">
+                1 pt
+              </span>
+<button aria-label="Editar item 2" class="text-primary hover:text-primary-container hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center gap-1 group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">edit</span>
+<span class="font-label-bold md:hidden">Editar</span>
+</button>
+</div>
+</article>
+<!-- Item 3 -->
+<article class="bg-surface-white rounded-lg border border-outline-variant p-4 flex flex-col md:flex-row gap-4 items-start md:items-center hover:border-primary-container/30 transition-colors">
+<div class="flex-grow flex flex-col gap-1">
+<span class="font-label-bold text-on-surface">3. Equilíbrio em pé</span>
+<span class="text-sm text-on-surface-variant">Não consegue realizar</span>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-4">
+<span class="bg-surface-container-high text-primary font-label-bold px-3 py-1 rounded-full whitespace-nowrap">
+                0 pts
+              </span>
+<button aria-label="Editar item 3" class="text-primary hover:text-primary-container hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center gap-1 group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">edit</span>
+<span class="font-label-bold md:hidden">Editar</span>
+</button>
+</div>
+</article>
+<!-- Additional items would follow same pattern -->
+<div class="text-center py-4 text-on-surface-variant font-label-sm border-t border-dashed border-outline-variant/50 mt-2">
+            + 30 itens revisados
+          </div>
+</div>
+</section>
+</div>
+<!-- Sticky Footer Actions -->
+<div class="fixed bottom-0 w-full max-w-[768px] bg-surface-white border-t border-outline-variant p-container-padding-mobile flex gap-4 z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:px-container-padding-tablet pb-safe">
+<button class="flex-1 min-h-[56px] bg-surface-white text-primary border-2 border-primary rounded-lg font-label-bold hover:bg-surface-container-low active:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+        Voltar
+      </button>
+<button class="flex-[2] min-h-[56px] bg-primary text-on-primary rounded-lg font-label-bold hover:bg-primary-container active:bg-primary-fixed transition-colors shadow-sm flex items-center justify-center gap-2">
+        Finalizar avaliação
+        <span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</main>
+</body></html>

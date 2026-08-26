@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhe do atendimento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#ecf0ff",
+                      "background": "#f9f9ff",
+                      "on-tertiary-container": "#cadcec",
+                      "score-gold": "#C19C00",
+                      "on-background": "#091c35",
+                      "inverse-primary": "#a9c7ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#dbe4eb",
+                      "primary-container": "#005eb8",
+                      "clinical-bg": "#F8FAFC",
+                      "surface-tint": "#005db6",
+                      "tertiary-container": "#50616e",
+                      "outline-variant": "#c2c6d4",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#a9c7ff",
+                      "secondary-fixed-dim": "#bfc8ce",
+                      "on-primary-container": "#c8daff",
+                      "on-tertiary-fixed-variant": "#384956",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#d6e3ff",
+                      "tertiary-fixed": "#d3e5f5",
+                      "surface-variant": "#d6e3ff",
+                      "on-secondary-container": "#5d666c",
+                      "surface-white": "#FFFFFF",
+                      "surface-dim": "#cadbfc",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#424752",
+                      "surface-bright": "#f9f9ff",
+                      "primary": "#00478d",
+                      "secondary": "#576066",
+                      "secondary-container": "#dbe4eb",
+                      "on-primary-fixed-variant": "#00468c",
+                      "success-green": "#107C10",
+                      "tertiary": "#394956",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#3f484e",
+                      "surface-container": "#e7eeff",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#141d22",
+                      "outline": "#727783",
+                      "on-tertiary-fixed": "#0c1d29",
+                      "tertiary-fixed-dim": "#b7c9d8",
+                      "on-surface": "#091c35",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-container-high": "#dfe8ff",
+                      "inverse-surface": "#20314b",
+                      "on-primary-fixed": "#001b3d",
+                      "error-red": "#D13438",
+                      "surface": "#f9f9ff",
+                      "surface-container-low": "#f0f3ff",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-tablet": "32px",
+                      "stack-md": "16px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "gutter": "16px",
+                      "touch-target-min": "48px",
+                      "unit": "8px",
+                      "container-padding-mobile": "16px"
+              },
+              "fontFamily": {
+                      "score-display": [
+                              "Manrope"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Manrope"
+                      ],
+                      "headline-lg": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Manrope"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-bold": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "score-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-clinical-bg text-on-surface font-body-md min-h-screen pb-safe">
+<!-- Header (Suppressed navigation since this is a sub-page/transactional view) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant flex justify-between items-center px-container-mobile h-14 w-full max-w-screen-md mx-auto sticky top-0 z-10">
+<button aria-label="Voltar" class="h-10 w-10 flex items-center justify-center rounded-full hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200 text-primary dark:text-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed text-center flex-1 pr-10">Detalhe do atendimento</h1>
+</header>
+<main class="w-full max-w-screen-md mx-auto px-container-mobile md:px-container-padding-tablet py-stack-lg space-y-stack-lg">
+<!-- Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-stack-md flex flex-col items-center justify-center text-center shadow-sm">
+<div class="h-16 w-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-headline-lg text-headline-lg-mobile mb-stack-sm">
+                MAS
+            </div>
+<p class="font-body-md text-on-surface-variant mb-stack-sm">12/08/2026</p>
+<div class="flex items-baseline gap-2">
+<span class="font-score-display text-score-display text-primary">42</span>
+<span class="font-body-md text-on-surface-variant">de 66 pontos</span>
+</div>
+</section>
+<!-- Read-only List of Items -->
+<section class="space-y-stack-sm">
+<h2 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-stack-md">Respostas da Avaliação</h2>
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-stack-md flex items-start gap-gutter shadow-sm">
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface mb-1">1. Sentar na cadeira</p>
+<p class="font-body-md text-on-surface-variant">Consegue sentar na cadeira sem apoio das mãos.</p>
+</div>
+<div class="bg-surface-container h-8 px-3 rounded-full flex items-center justify-center">
+<span class="font-label-bold text-label-bold text-primary">+2</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-stack-md flex items-start gap-gutter shadow-sm">
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface mb-1">2. Ficar de pé</p>
+<p class="font-body-md text-on-surface-variant">Consegue ficar de pé com apoio, mas precisa de ajuda para levantar.</p>
+</div>
+<div class="bg-surface-container h-8 px-3 rounded-full flex items-center justify-center">
+<span class="font-label-bold text-label-bold text-primary">+1</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-stack-md flex items-start gap-gutter shadow-sm">
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface mb-1">3. Caminhar 10 metros</p>
+<p class="font-body-md text-on-surface-variant">Não consegue realizar a tarefa.</p>
+</div>
+<div class="bg-surface-container h-8 px-3 rounded-full flex items-center justify-center">
+<span class="font-label-bold text-label-bold text-primary">0</span>
+</div>
+</div>
+<!-- (Placeholder for remaining 30 items) -->
+<div class="py-stack-md text-center">
+<p class="font-body-md text-on-surface-variant italic">... 30 itens restantes ...</p>
+</div>
+</section>
+<!-- Local-only Info Note -->
+<section class="bg-surface-container-low rounded-lg p-stack-md flex items-start gap-3 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                Este atendimento está armazenado apenas localmente neste dispositivo. Para garantir a segurança dos dados, não realizamos backup automático na nuvem.
+            </p>
+</section>
+<!-- Destructive Button -->
+<section class="pt-stack-md pb-stack-lg flex justify-center">
+<button class="flex items-center gap-2 h-touch-target-min px-6 rounded-full text-error font-label-bold text-label-bold hover:bg-error-container/30 transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">delete</span>
+                Excluir atendimento
+            </button>
+</section>
+</main>
+</body></html>
