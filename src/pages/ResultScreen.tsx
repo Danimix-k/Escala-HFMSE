@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CompletedAssessment } from '../types/hfmse';
 import { HFMSE_ITEMS } from '../data/hfmseScaleData';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { AssessmentSummaryRow } from '../components/AssessmentSummaryRow';
 import { LocalDataNotice } from '../components/LocalDataNotice';
 import { CheckCircle2, Plus, History, Printer, ChevronDown, ChevronUp, FileText, Info } from 'lucide-react';
@@ -141,6 +142,9 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
         {/* Local Storage Privacy Reminder */}
         <LocalDataNotice />
       </main>
+
+      {/* Institutional App Footer */}
+      <AppFooter />
     </div>
   );
 };

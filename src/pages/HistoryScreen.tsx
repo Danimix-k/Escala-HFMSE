@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CompletedAssessment } from '../types/hfmse';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { LocalDataNotice } from '../components/LocalDataNotice';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import { Plus, Trash2, Calendar, FileText, Inbox } from 'lucide-react';
@@ -158,6 +159,9 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
           </div>
         )}
       </main>
+
+      {/* Institutional App Footer */}
+      <AppFooter />
 
       {/* Individual Delete Dialog */}
       <ConfirmationDialog

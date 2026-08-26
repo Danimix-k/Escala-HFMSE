@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DraftAssessment } from '../types/hfmse';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { LocalDataNotice } from '../components/LocalDataNotice';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import { Play, Trash2, ArrowRight, UserCheck, Calendar, AlertCircle } from 'lucide-react';
@@ -210,6 +211,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </form>
         </div>
       </main>
+
+      {/* Institutional App Footer */}
+      <AppFooter />
 
       {/* Discard Confirmation Modal */}
       <ConfirmationDialog

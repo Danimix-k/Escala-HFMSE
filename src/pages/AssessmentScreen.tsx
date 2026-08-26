@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScaleItem, Score, DraftAssessment } from '../types/hfmse';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { ProgressIndicator } from '../components/ProgressIndicator';
 import { InstructionAccordion } from '../components/InstructionAccordion';
 import { ScoreOptionCard } from '../components/ScoreOptionCard';
@@ -126,41 +127,53 @@ export const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
               />
             ))}
           </div>
+
+          {/* Action Navigation Card (In-flow, elevated above bottom footer) */}
+          <div className="pt-4 mt-6 border-t border-surface-container">
+            <div className="bg-surface-white border border-surface-container rounded-3xl p-4 sm:p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={onPrev}
+                  disabled={isFirstItem}
+                  className="px-4 sm:px-6 py-3.5 rounded-2xl border-2 border-surface-container text-sm font-bold text-on-surface hover:bg-surface-container transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Anterior</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onNavigateReview}
+                  className="px-3 py-2 text-xs font-semibold text-secondary hover:text-primary hover:bg-surface-container rounded-xl transition-colors text-center"
+                >
+                  Ver Respostas ({Object.keys(draft.responses).length}/33)
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onNext}
+                  disabled={!hasSelectedScore}
+                  className="px-6 sm:px-8 py-3.5 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/25 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+                >
+                  <span>{isLastItem ? 'Revisar' : 'Próximo'}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {!hasSelectedScore && (
+                <p className="text-center text-xs text-amber-700 font-medium">
+                  Selecione uma pontuação acima para avançar para o próximo item.
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       </main>
 
-      {/* Sticky Bottom Form Actions */}
-      <div className="fixed bottom-0 inset-x-0 bg-surface-white/95 backdrop-blur-md border-t border-surface-container py-3.5 px-4 sm:px-6 z-30 shadow-lg">
-        <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={onPrev}
-            disabled={isFirstItem}
-            className="px-4 sm:px-6 py-3 rounded-2xl border border-surface-container text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">Anterior</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={onNavigateReview}
-            className="px-3 py-2 text-xs font-semibold text-secondary hover:text-primary hover:bg-surface-container rounded-xl transition-colors"
-          >
-            Ver Todas as Respostas
-          </button>
-
-          <button
-            type="button"
-            onClick={onNext}
-            disabled={!hasSelectedScore}
-            className="px-5 sm:px-8 py-3 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/20 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
-          >
-            <span>{isLastItem ? 'Revisar' : 'Próximo'}</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
+      {/* Institutional App Footer */}
+      <AppFooter />
     </div>
   );
 };
+

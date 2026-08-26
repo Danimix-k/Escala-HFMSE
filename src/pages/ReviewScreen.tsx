@@ -3,6 +3,7 @@ import { DraftAssessment } from '../types/hfmse';
 import { HFMSE_ITEMS } from '../data/hfmseScaleData';
 import { calculateTotalScore, getMissingItems } from '../services/storageService';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { AssessmentSummaryRow } from '../components/AssessmentSummaryRow';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import { ArrowLeft, CheckCircle2, AlertTriangle } from 'lucide-react';
@@ -108,32 +109,35 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
               />
             ))}
           </div>
+
+          {/* Action Navigation Card */}
+          <div className="pt-4 mt-6 border-t border-surface-container">
+            <div className="bg-surface-white border border-surface-container rounded-3xl p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={onBackToAssessment}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl border-2 border-surface-container text-sm font-bold text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center gap-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Voltar aos Itens</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowFinalizeConfirm(true)}
+                disabled={!isComplete}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/25 transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Finalizar Avaliação</span>
+              </button>
+            </div>
+          </div>
         </div>
       </main>
 
-      {/* Sticky Bottom Actions */}
-      <div className="fixed bottom-0 inset-x-0 bg-surface-white/95 backdrop-blur-md border-t border-surface-container py-3.5 px-4 sm:px-6 z-30 shadow-lg">
-        <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={onBackToAssessment}
-            className="px-4 sm:px-6 py-3 rounded-2xl border border-surface-container text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Voltar aos Itens</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setShowFinalizeConfirm(true)}
-            disabled={!isComplete}
-            className="px-6 sm:px-8 py-3 rounded-2xl bg-primary hover:bg-primary-container text-white text-sm font-bold shadow-md shadow-primary/20 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
-          >
-            <CheckCircle2 className="w-4 h-4" />
-            <span>Finalizar Avaliação</span>
-          </button>
-        </div>
-      </div>
+      {/* Institutional App Footer */}
+      <AppFooter />
 
       {/* Finalize Confirmation Modal */}
       <ConfirmationDialog

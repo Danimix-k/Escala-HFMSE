@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CompletedAssessment } from '../types/hfmse';
 import { HFMSE_ITEMS } from '../data/hfmseScaleData';
 import { AppHeader } from '../components/AppHeader';
+import { AppFooter } from '../components/AppFooter';
 import { AssessmentSummaryRow } from '../components/AssessmentSummaryRow';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import { LocalDataNotice } from '../components/LocalDataNotice';
@@ -114,6 +115,9 @@ export const DetailScreen: React.FC<DetailScreenProps> = ({
         {/* Local Storage Notice */}
         <LocalDataNotice />
       </main>
+
+      {/* Institutional App Footer */}
+      <AppFooter />
 
       {/* Delete Confirmation Modal */}
       <ConfirmationDialog
