@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { DraftAssessment, CompletedAssessment, Score, AppView } from '../types/hfmse';
 import { HFMSE_SCALE_VERSION } from '../data/hfmseScaleData';
 import { storageService } from '../services/storageService';
@@ -10,8 +10,7 @@ export function useAssessment() {
   const [selectedAssessment, setSelectedAssessment] = useState<CompletedAssessment | null>(null);
   const [storageError, setStorageError] = useState<string | null>(null);
 
-  // Carregar rascunho e histórico ao iniciar
-  useEffect(() => {
+  const loadStoredAssessments = useCallback(() => {
     const loadedDraft = storageService.getDraft();
     setDraft(loadedDraft);
 
@@ -20,7 +19,7 @@ export function useAssessment() {
   }, []);
 
   // Iniciar nova avaliação
-  const startNewAssessment = useCallback((patientInitials: string, attendanceDate: string) => {
+  const startNewAssessment = useCallback(async (patientInitials: string, attendanceDate: string) => {
     const newDraft: DraftAssessment = {
       id: 'hfmse_' + Date.now().toString(36) + Math.random().toString(36).substring(2, 7),
       scaleVersion: HFMSE_SCALE_VERSION,
@@ -32,7 +31,7 @@ export function useAssessment() {
       updatedAt: new Date().toISOString(),
     };
 
-    const saved = storageService.saveDraft(newDraft);
+    const saved = await storageService.saveDraft(newDraft);
     if (!saved) {
       setStorageError('Não foi possível gravar o rascunho no navegador.');
     }
@@ -48,14 +47,14 @@ export function useAssessment() {
   }, [draft]);
 
   // Descartar rascunho
-  const discardDraft = useCallback(() => {
-    storageService.clearDraft();
+  const discardDraft = useCallback(async () => {
+    await storageService.clearDraft();
     setDraft(null);
     setView('home');
   }, []);
 
   // Selecionar pontuação para o item atual
-  const setItemScore = useCallback((score: Score) => {
+  const setItemScore = useCallback(async (score: Score) => {
     if (!draft) return;
 
     const updatedResponses = {
@@ -70,18 +69,18 @@ export function useAssessment() {
     };
 
     setDraft(updatedDraft);
-    storageService.saveDraft(updatedDraft);
+    await storageService.saveDraft(updatedDraft);
   }, [draft]);
 
   // Avançar item
-  const nextItem = useCallback(() => {
+  const nextItem = useCallback(async () => {
     if (!draft) return;
 
     if (draft.currentItem < 33) {
       const nextNum = draft.currentItem + 1;
       const updatedDraft = { ...draft, currentItem: nextNum };
       setDraft(updatedDraft);
-      storageService.saveDraft(updatedDraft);
+      await storageService.saveDraft(updatedDraft);
     } else {
       // Chegou ao fim -> direciona para revisão
       setView('review');
@@ -89,31 +88,31 @@ export function useAssessment() {
   }, [draft]);
 
   // Voltar item
-  const prevItem = useCallback(() => {
+  const prevItem = useCallback(async () => {
     if (!draft) return;
 
     if (draft.currentItem > 1) {
       const prevNum = draft.currentItem - 1;
       const updatedDraft = { ...draft, currentItem: prevNum };
       setDraft(updatedDraft);
-      storageService.saveDraft(updatedDraft);
+      await storageService.saveDraft(updatedDraft);
     }
   }, [draft]);
 
   // Ir diretamente para um item (a partir da revisão)
-  const jumpToItem = useCallback((itemNumber: number) => {
+  const jumpToItem = useCallback(async (itemNumber: number) => {
     if (!draft) return;
     const updatedDraft = { ...draft, currentItem: itemNumber };
     setDraft(updatedDraft);
-    storageService.saveDraft(updatedDraft);
+    await storageService.saveDraft(updatedDraft);
     setView('assessment');
   }, [draft]);
 
   // Finalizar avaliação (transação atômica)
-  const finalizeAssessment = useCallback(() => {
+  const finalizeAssessment = useCallback(async () => {
     if (!draft) return;
 
-    const result = storageService.finalizeAssessment(draft);
+    const result = await storageService.finalizeAssessment(draft);
     if (result.success && result.completed) {
       setDraft(null);
       setSelectedAssessment(result.completed);
@@ -125,8 +124,8 @@ export function useAssessment() {
   }, [draft]);
 
   // Excluir avaliação do histórico
-  const deleteAssessment = useCallback((id: string) => {
-    storageService.deleteAssessment(id);
+  const deleteAssessment = useCallback(async (id: string) => {
+    await storageService.deleteAssessment(id);
     const updated = storageService.getHistory();
     setHistory(updated);
     if (selectedAssessment?.id === id) {
@@ -136,8 +135,8 @@ export function useAssessment() {
   }, [selectedAssessment]);
 
   // Limpar todo o histórico
-  const clearAllHistory = useCallback(() => {
-    storageService.clearAllHistory();
+  const clearAllHistory = useCallback(async () => {
+    await storageService.clearAllHistory();
     setHistory([]);
     setSelectedAssessment(null);
   }, []);
@@ -179,5 +178,6 @@ export function useAssessment() {
     clearAllHistory,
     viewDetail,
     viewReport,
+    loadStoredAssessments,
   };
 }

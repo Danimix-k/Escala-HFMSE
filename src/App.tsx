@@ -1,4 +1,6 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useAssessment } from './hooks/useAssessment';
+import { storageService, VaultResult } from './services/storageService';
 import { HFMSE_ITEMS } from './data/hfmseScaleData';
 import { HomeScreen } from './pages/HomeScreen';
 import { AssessmentScreen } from './pages/AssessmentScreen';
@@ -7,6 +9,7 @@ import { ResultScreen } from './pages/ResultScreen';
 import { HistoryScreen } from './pages/HistoryScreen';
 import { DetailScreen } from './pages/DetailScreen';
 import { ReportScreen } from './pages/ReportScreen';
+import { StorageUnlockScreen } from './pages/StorageUnlockScreen';
 
 export function App() {
   const {
@@ -27,7 +30,63 @@ export function App() {
     clearAllHistory,
     viewDetail,
     viewReport,
+    loadStoredAssessments,
   } = useAssessment();
+  const [vaultReady, setVaultReady] = useState(false);
+  const [hasExistingVault, setHasExistingVault] = useState(() => storageService.isVaultConfigured());
+
+  const lockVault = useCallback(() => {
+    storageService.lockVault();
+    setVaultReady(false);
+    setView('home');
+  }, [setView]);
+
+  useEffect(() => {
+    if (!vaultReady) return undefined;
+
+    const inactivityLimit = 15 * 60 * 1000;
+    let timeoutId: number;
+    const resetTimer = () => {
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(lockVault, inactivityLimit);
+    };
+    const events = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+    events.forEach((eventName) => window.addEventListener(eventName, resetTimer, { passive: true }));
+    resetTimer();
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      events.forEach((eventName) => window.removeEventListener(eventName, resetTimer));
+    };
+  }, [lockVault, vaultReady]);
+
+  const handleVaultSubmit = async (passphrase: string): Promise<VaultResult> => {
+    const result = hasExistingVault
+      ? await storageService.unlockVault(passphrase)
+      : await storageService.setupVault(passphrase);
+
+    if (result.success) {
+      loadStoredAssessments();
+      setVaultReady(true);
+      setHasExistingVault(true);
+    }
+    return result;
+  };
+
+  const handleClearVault = () => {
+    storageService.clearVault();
+    setHasExistingVault(false);
+  };
+
+  if (!vaultReady) {
+    return (
+      <StorageUnlockScreen
+        hasExistingVault={hasExistingVault}
+        onSubmit={handleVaultSubmit}
+        onClearVault={handleClearVault}
+      />
+    );
+  }
 
   // Obter item atual da escala HFMSE
   const currentItemIndex = (draft?.currentItem || 1) - 1;

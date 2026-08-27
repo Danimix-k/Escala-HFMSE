@@ -62,10 +62,10 @@ export default {
         "error": "#ba1a1a"
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        headline: ["Manrope", "sans-serif"],
-        manrope: ["Manrope", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        sans: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        headline: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        manrope: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        inter: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
       },
       borderRadius: {
         'DEFAULT': '0.25rem',
