@@ -66,10 +66,10 @@ export const StorageUnlockScreen: React.FC<StorageUnlockScreenProps> = ({ hasExi
                 autoComplete={hasExistingVault ? 'current-password' : 'new-password'}
                 value={passphrase}
                 onChange={(event) => setPassphrase(event.target.value)}
-                minLength={10}
+                minLength={4}
                 required
                 className="w-full pl-11 pr-4 py-3 bg-surface-container-low/60 border border-surface-container rounded-2xl text-on-surface focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder={hasExistingVault ? 'Digite sua senha' : 'Mínimo de 10 caracteres'}
+                placeholder={hasExistingVault ? 'Digite sua senha' : 'Mínimo de 4 caracteres'}
               />
             </div>
           </div>
@@ -85,7 +85,7 @@ export const StorageUnlockScreen: React.FC<StorageUnlockScreenProps> = ({ hasExi
                 autoComplete="new-password"
                 value={confirmation}
                 onChange={(event) => setConfirmation(event.target.value)}
-                minLength={10}
+                minLength={4}
                 required
                 className="w-full px-4 py-3 bg-surface-container-low/60 border border-surface-container rounded-2xl text-on-surface focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Repita a senha"

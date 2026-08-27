@@ -12,7 +12,7 @@ Aplicação web responsiva para conduzir a **Escala Motora Funcional de Hammersm
 
 ## Privacidade e armazenamento
 
-O aplicativo solicita apenas iniciais do paciente e data do atendimento. Rascunhos, respostas e histórico são cifrados no navegador com uma senha local definida pelo profissional.
+O aplicativo solicita apenas iniciais do paciente e data do atendimento. Rascunhos, respostas e histórico são cifrados no navegador com uma senha local definida pelo profissional. A senha deve ter ao menos quatro caracteres; para dados clínicos reais, prefira uma senha maior.
 
 - A senha não é salva nem transmitida.
 - O cofre é bloqueado após 15 minutos sem interação e sempre que a página é recarregada.

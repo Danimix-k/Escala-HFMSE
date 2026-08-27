@@ -139,7 +139,7 @@ export const storageService = {
   },
 
   async setupVault(passphrase: string): Promise<VaultResult> {
-    if (passphrase.length < 10) return { success: false, error: 'Use uma senha local com pelo menos 10 caracteres.' };
+    if (passphrase.length < 4) return { success: false, error: 'Use uma senha local com pelo menos 4 caracteres.' };
     try {
       const salt = crypto.getRandomValues(new Uint8Array(16));
       const key = await deriveKey(passphrase, salt, PBKDF2_ITERATIONS);
